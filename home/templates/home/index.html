@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block start %}
+    <h1> This Template is index page</h1>
+
+    <a href = "/contact/">
+        Contact
+    </a>
+
+    <a href = "/about">About</a>
+
+    {{peoples}}
+    <table class="container">
+        <tr>
+          <th>S.No</th>
+          <th>name</th>
+          <th>age</th>
+          <th>can Vote</th>
+        </tr>
+
+        {% for people in peoples %}
+        <tr>
+          <td>{{forloop.counter}}</forloop></td>
+          <td>{{people.name}}</td>
+          <td>{{people.age}}</td>
+          <td>
+            {% if people.age >= 18 %}
+                👍
+            {% else %}
+                👎 
+                {% endif %}
+
+          </td>
+        </tr>
+        {% endfor %}
+        
+      </table>
+      <p> {{text|truncatechars:80}}</p>
+      
+  <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+   <p>
+    {% if "cucumber" in vegetables %}
+        Yes Available
+    {% elif "Tomato" in vegetables %}
+        Yes Available
+    {% else %}
+        Not Available 
+    {% endif %}  
+   </p>
+  
+   {% endblock %}
